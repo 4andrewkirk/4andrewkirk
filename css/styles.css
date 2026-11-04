@@ -10951,21 +10951,35 @@ body {
   gap: 0.5rem;
   min-height: 44px;
   padding: 0.45rem 0.85rem;
-  border: 1px solid var(--resume-accent);
+  border: 1px solid transparent;
   border-radius: 0.5rem;
-  background: #fff;
-  color: var(--resume-accent);
+  background: var(--contact-color);
+  color: #fff;
   font-weight: 650;
   text-decoration: none;
 }
 
-.contact-links a:first-child, .contact-links a:hover {
-  background: var(--resume-accent);
-  color: #fff;
+/* White fill with a Gmail-inspired four-color border. */
+.contact-links a[href^="mailto:"] {
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(110deg, #4285f4, #ea4335 38%, #fbbc04 68%, #34a853) border-box;
+  color: #a52720;
+}
+
+.contact-links a[href^="https://www.linkedin.com/"] {
+  --contact-color: #0a66c2;
+}
+
+.contact-links a[download] {
+  --contact-color: #d6001c;
+}
+
+.contact-links a:hover {
+  filter: brightness(0.92);
 }
 
 .contact-links a:focus-visible {
-  outline-color: var(--resume-accent);
+  outline-color: var(--resume-ink);
 }
 
 .resume-entry {
@@ -10992,7 +11006,7 @@ body {
   padding-left: 1.15rem;
 }
 
-.resume-bullets li + li, .resume .fa-ul li + li {
+.resume-bullets li + li, .certification-list li + li, .resume .fa-ul li + li {
   margin-top: 0.3rem;
 }
 
@@ -11003,16 +11017,6 @@ body {
 @media (min-width: 768px) {
   .resume-entry {
     grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  #skills .fa-ul {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.35rem 2rem;
-  }
-
-  #skills .fa-ul li {
-    margin-top: 0;
   }
 }
 
